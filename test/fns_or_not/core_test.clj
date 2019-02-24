@@ -25,3 +25,18 @@
   (testing "Adding push nested empty helper"
     (is (= [["11"][]] (push-nested-empty [["11"]])))
 ))
+
+(deftest is-a-fn
+  (testing "Check if additional point invalids fn check"
+    (is (= {1 2 3 4 2 3} (still-a-fn {1 2 3 4} [2 3])))
+    (is (= nil (still-a-fn nil [2 3])))
+    (is (= nil (still-a-fn {1 2 3 4} [1 3]))))
+  (testing "Check reduce over points and outcome"
+    (is (= nil (are-points-a-fn [[1 2][3 4][1 3]]))))
+)
+
+(deftest map-output
+  (testing "mapping nil - NO else YES"
+    (is (= "YES\nNO\nYES" (which-are-fns [[[1 3][2 3]][[1 2][3 4][1 3]][[2 3]]])))
+    (is (= "YES" (yes-no {1 2 3 4}))))
+)
