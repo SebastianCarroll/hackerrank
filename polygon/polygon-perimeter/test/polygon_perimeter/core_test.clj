@@ -12,7 +12,13 @@
     (is (= 2.0 (distance [0 0] [2 0])))
     (is (= 0.0 (distance [1 1] [1 1])))
     ; (sqrt 4 + 4) = 2.8284
-    (is (fuzzy= 0.0001 2.8284 (distance [0 0] [2 2])))))
+    (is (fuzzy= 0.0001 2.8284 (distance [0 0] [2 2]))))
+  (testing "Distance between points using mapper"
+    (is (= 1.0 (distance-mapper [[0 1] [0 0]])))))
+
+(deftest add-distance-points
+  (testing "Distance between point links"
+    (is (= 1.0 (add-distances [[0 1] [0 0]])))))
 
 (deftest str-to-points-test
   (testing "converting strings from stdin to points"
@@ -23,8 +29,3 @@
 (def capture
   (let [counter (atom 0)]
     (fn [] (do (swap! counter inc) @counter))))
-
-(deftest repeat-based-on-hof
-  (testing "call fn and repeat based on output"
-    (is (= [3] (run-all gen-ints #(%))))
-    ))

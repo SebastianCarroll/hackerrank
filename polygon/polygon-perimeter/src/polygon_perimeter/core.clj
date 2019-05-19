@@ -10,6 +10,17 @@
         dy (- p2y p1y)]
     (Math/sqrt (+ (* dx dx) (* dy dy)))))
 
+(defn distance-mapper
+  "Exists to convert the inputs expected by distance"
+  [p]
+  (let [[p1 p2] p]
+    (distance p1 p2)))
+
+(defn add-distances [ps] 
+  (let [parts (partition 2 1 ps)
+        distances (map distance-mapper parts)]
+    (apply + distances)))
+
 (defn str-to-points [str-line]
   (map #(Integer/parseInt %) (str/split str-line #" ")))
 
