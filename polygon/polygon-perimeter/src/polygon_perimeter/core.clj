@@ -13,12 +13,13 @@
 (defn str-to-points [str-line]
   (map #(Integer/parseInt %) (str/split str-line #" ")))
 
-(defn run-all [get-next do-next] 
-  (let [in-str (get-next)
-        n (Integer/parseInt in-str)]
-    (repeatedly n #(do-next n))))
+(defn run-all [get-line] 
+  (let [[n] (str-to-points (get-line))]
+    (do
+      (println n)
+      (dotimes [i n] (println n)))))
 
 (defn -main
   "Give me a problem in the format of hackerrank input"
   [& args]
-  (run-all read-line println))
+  (run-all read-line))
