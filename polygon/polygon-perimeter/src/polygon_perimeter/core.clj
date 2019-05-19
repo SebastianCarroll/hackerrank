@@ -16,7 +16,9 @@
   (let [[p1 p2] p]
     (distance p1 p2)))
 
-(defn append-first-to-end [a]
+(defn append-first-to-end
+  "Creates a new seq where the first element is appended to the end"
+  [a]
   (let [l (count a)
         l1 (+ l 1)
         c (cycle a)]
@@ -35,7 +37,7 @@
   (let [[n] (str-to-points (get-line))]
     (add-distances (repeatedly n #(str-to-points (get-line))))))
 
-(defn run-all [get-line] 
+(defn run-all [get-line]
   (let [[n] (str-to-points (get-line))]
     (dotimes [i n] (println (run-one-problem get-line)))))
 
