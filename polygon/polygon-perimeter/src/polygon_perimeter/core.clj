@@ -8,8 +8,6 @@
         dy (- p2y p1y)]
     (Math/sqrt (+ (* dx dx) (* dy dy)))))
 
-
-
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
