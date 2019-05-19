@@ -63,4 +63,6 @@
 
 (deftest run-main-problems-test
   (testing "Can run all problems as given off the 'command line'"
+    ; nil here as it is a dotimes currently which returns null
+    ; not a real test
     (is (= nil (run-all (gen-input ["1" "4" "0 0" "0 1" "1 1" "1 0"]))))))

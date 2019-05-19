@@ -24,8 +24,8 @@
 
 (defn add-distances [ps]
   (let [first-at-end (append-first-to-end ps)
-        parts (partition 2 1 first-at-end)
-        distances (map distance-mapper parts)]
+        point-pairs (partition 2 1 first-at-end)
+        distances (map distance-mapper point-pairs)]
     (apply + distances)))
 
 (defn str-to-points [str-line]
@@ -33,15 +33,11 @@
 
 (defn run-one-problem [get-line]
   (let [[n] (str-to-points (get-line))]
-    (do
-      (println (str "Running problem. Found input: " n))
-      (add-distances (repeatedly n #(str-to-points (get-line)))))))
+    (add-distances (repeatedly n #(str-to-points (get-line))))))
 
 (defn run-all [get-line] 
   (let [[n] (str-to-points (get-line))]
-    (do
-      (println n)
-      (dotimes [i n] (println (run-one-problem get-line))))))
+    (dotimes [i n] (println (run-one-problem get-line)))))
 
 (defn -main
   "Give me a problem in the format of hackerrank input"
