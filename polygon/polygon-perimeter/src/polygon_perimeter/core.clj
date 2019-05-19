@@ -16,8 +16,15 @@
   (let [[p1 p2] p]
     (distance p1 p2)))
 
-(defn add-distances [ps] 
-  (let [parts (partition 2 1 ps)
+(defn append-first-to-end [a]
+  (let [l (count a)
+        l1 (+ l 1)
+        c (cycle a)]
+    (take l1 c)))
+
+(defn add-distances [ps]
+  (let [first-at-end (append-first-to-end ps)
+        parts (partition 2 1 first-at-end)
         distances (map distance-mapper parts)]
     (apply + distances)))
 
