@@ -18,3 +18,13 @@
   (testing "converting strings from stdin to points"
     (is (= [0 0] (str-to-points "0 0")))
     (is (= [0 2] (str-to-points "0 2")))))
+
+(defn gen-ints [] "3")
+(def capture
+  (let [counter (atom 0)]
+    (fn [] (do (swap! counter inc) @counter))))
+
+(deftest repeat-based-on-hof
+  (testing "call fn and repeat based on output"
+    (is (= [3] (run-all gen-ints #(%))))
+    ))
