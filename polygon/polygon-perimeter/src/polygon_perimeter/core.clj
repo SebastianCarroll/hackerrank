@@ -35,13 +35,13 @@
   (let [[n] (str-to-points (get-line))]
     (do
       (println (str "Running problem. Found input: " n))
-      (println (add-distances (repeatedly n #(str-to-points (get-line))))))))
+      (add-distances (repeatedly n #(str-to-points (get-line)))))))
 
 (defn run-all [get-line] 
   (let [[n] (str-to-points (get-line))]
     (do
       (println n)
-      (dotimes [i n] (run-one-problem get-line)))))
+      (dotimes [i n] (println (run-one-problem get-line))))))
 
 (defn -main
   "Give me a problem in the format of hackerrank input"

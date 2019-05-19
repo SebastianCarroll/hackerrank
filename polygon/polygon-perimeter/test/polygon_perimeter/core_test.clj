@@ -35,7 +35,28 @@
     (is (= [0 0] (str-to-points "0 0")))
     (is (= [0 2] (str-to-points "0 2")))))
 
-(defn gen-ints [] "3")
+(defn gen-ints 
+  "Test function to mimic calling read-line repeatedly in the main program"
+  [values] 
+  (let [atom-values (atom values)]
+    (fn [] 
+      (let [head (first @atom-values)
+            tail (rest @atom-values)]
+        (do 
+          (swap! atom-values rest)
+          head)))))
+
+(deftest test-gen-fn
+  (testing "Can gen fn take an seq and return each elem when called"
+    (is (= '(1 2 3) (repeatedly 3 (gen-ints [1 2 3]) )))))
+
 (def capture
   (let [counter (atom 0)]
-    (fn [] (do (swap! counter inc) @counter))))
+    (fn [] 
+      (do 
+        (swap! counter inc) 
+        @counter))))
+
+(deftest run-single-prob-test
+  (testing "Can run single problem with input fn supplied"
+    (is (= 1 1))))
