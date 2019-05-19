@@ -35,7 +35,7 @@
     (is (= [0 0] (str-to-points "0 0")))
     (is (= [0 2] (str-to-points "0 2")))))
 
-(defn gen-ints 
+(defn gen-input
   "Test function to mimic calling read-line repeatedly in the main program"
   [values] 
   (let [atom-values (atom values)]
@@ -48,7 +48,7 @@
 
 (deftest test-gen-fn
   (testing "Can gen fn take an seq and return each elem when called"
-    (is (= '(1 2 3) (repeatedly 3 (gen-ints [1 2 3]) )))))
+    (is (= '(1 2 3) (repeatedly 3 (gen-input [1 2 3]) )))))
 
 (def capture
   (let [counter (atom 0)]
@@ -59,4 +59,8 @@
 
 (deftest run-single-prob-test
   (testing "Can run single problem with input fn supplied"
-    (is (= 1 1))))
+    (is (= 4.0 (run-one-problem (gen-input ["4" "0 0" "0 1" "1 1" "1 0"]))))))
+
+(deftest run-main-problems-test
+  (testing "Can run all problems as given off the 'command line'"
+    (is (= nil (run-all (gen-input ["1" "4" "0 0" "0 1" "1 1" "1 0"]))))))
