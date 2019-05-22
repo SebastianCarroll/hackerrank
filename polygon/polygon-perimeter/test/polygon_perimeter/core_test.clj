@@ -1,6 +1,7 @@
 (ns polygon-perimeter.core-test
   (:require [clojure.test :refer :all]
-            [polygon-perimeter.core :refer :all]))
+            [polygon-perimeter.core :refer :all]
+            [polygon-perimeter.area :refer :all]))
 
 (defn fuzzy= [tolerance x y]
   (let [diff (Math/abs (- x y))]
@@ -66,3 +67,7 @@
     ; nil here as it is a dotimes currently which returns null
     ; not a real test
     (is (= nil (run-all (gen-input ["1" "4" "0 0" "0 1" "1 1" "1 0"]))))))
+
+(deftest distance-function-fail
+  (testing "Distance between points"
+    (is (= 'a' (a)))))
