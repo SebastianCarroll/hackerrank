@@ -13,17 +13,20 @@
 (defn map-to-ints [str-array]
   (map #(Integer/parseInt %) str-array))
 
-(defn mul-alternate-points [x y]
-  (let [[x1 x2] x
-        [y1 y2] y]
-    [(* x1 y2) (* y1 x2)]))
+(defn mul-alternate-points
+  "First arity takes a single point and applies it so 2-arity function takes over"
+  ([p] (apply mul-alternate-points p))
+  ([x y]
+   (let [[x1 x2] x
+         [y1 y2] y]
+     [(* x1 y2) (* y1 x2)])))
 
 (defn sum-points [[x1 x2] [y1 y2]]
   [(+ x1 y1) (+ x2 y2)])
 
 (defn sum-many-points [points]
   (let [pairs (partition 2 1 points)
-        sums (map #(apply mul-alternate-points %) pairs)]
+        sums (map mul-alternate-points pairs)]
     (reduce sum-points sums)))
 
 (defn -main
