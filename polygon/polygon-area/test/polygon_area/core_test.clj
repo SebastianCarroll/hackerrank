@@ -4,9 +4,11 @@
 
 (deftest a-test
   (testing "Summing Alternate points"
-    (is (= [4 6] (sum-alternate-points [1 2] [3 4])))
-    (is (= [4 6] (reduce sum-alternate-points [[1 2] [3 4]])))
-    (is (= [42 38] (reduce sum-alternate-points [[1 2][5 7][4 6]])))))
+    (is (= [4 6] (mul-alternate-points [1 2] [3 4])))
+    (is (= [4 6] (reduce mul-alternate-points [[1 2] [3 4]]))))
+  (testing "Summing x and y together"
+    (is (= [8 6] (sum-points [1 2] [7 4])))
+    (is (= [42 38] (sum-many-points [[1 2] [5 7] [4 6]])))))
 
 ; 1 2
 ; 5 7

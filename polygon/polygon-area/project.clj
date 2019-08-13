@@ -6,4 +6,5 @@
   :dependencies [[org.clojure/clojure "1.10.0"]]
   :main ^:skip-aot polygon-area.core
   :target-path "target/%s"
+  :plugins [[lein-auto "0.1.3"]]
   :profiles {:uberjar {:aot :all}})
