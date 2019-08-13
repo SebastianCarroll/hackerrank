@@ -29,13 +29,15 @@
         sums (map mul-alternate-points pairs)]
     (reduce sum-points sums)))
 
-(defn sum-div 
-  ([[x y]] (sum-div x y))
+(defn loop1 [ls] (conj ls (first ls)))
+
+(defn minus-div2 
+  ([[x y]] (minus-div2 x y))
   ([x y]
-   (/ (+ x y) 2)))
+   (/ (- x y) 2)))
 
 (defn poly-area [ps]
-  (sum-div (sum-many-points ps)))
+  (minus-div2 (sum-many-points (loop1 ps))))
 
 (defn -main
   "I don't do a whole lot ... yet."
