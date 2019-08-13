@@ -11,7 +11,7 @@
 ; 1 0
 
 (defn map-to-ints [str-array]
-  (map #(Integer/parseInt %) str-array))
+  (mapv #(Integer/parseInt %) str-array))
 
 (defn mul-alternate-points
   "First arity takes a single point and applies it so 2-arity function takes over"
@@ -49,5 +49,5 @@
   ; multiply and divide
   (let [num-points (Integer/parseInt (read-line))
         str-points (repeatedly num-points #(str/split (read-line) #" "))
-        int-points (map map-to-ints str-points)]
-    (println int-points)))
+        int-points (mapv map-to-ints str-points)]
+    (println (poly-area int-points))))
