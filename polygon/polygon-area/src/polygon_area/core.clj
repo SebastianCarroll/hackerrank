@@ -29,8 +29,13 @@
         sums (map mul-alternate-points pairs)]
     (reduce sum-points sums)))
 
-(defn sum-div [x y]
-  (\ (+ x y) 2))
+(defn sum-div 
+  ([[x y]] (sum-div x y))
+  ([x y]
+   (/ (+ x y) 2)))
+
+(defn poly-area [ps]
+  (sum-div (sum-many-points ps)))
 
 (defn -main
   "I don't do a whole lot ... yet."
