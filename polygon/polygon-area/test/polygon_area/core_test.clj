@@ -10,7 +10,9 @@
     (is (= '((1 2) (2 3) (3 4)) (partition 2 1 [1 2 3 4]))))
   (testing "Summing x and y together"
     (is (= [8 6] (sum-points [1 2] [7 4])))
-    (is (= [37 38] (sum-many-points [[1 2] [5 7] [4 6]])))))
+    (is (= [37 38] (sum-many-points [[1 2] [5 7] [4 6]]))))
+  (testing "add together and divide by two"
+    (is (= 8 (sum-div [12 4])))))
 
 ; 1 2
 ; 5 7

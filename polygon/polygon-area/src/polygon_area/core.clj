@@ -29,6 +29,9 @@
         sums (map mul-alternate-points pairs)]
     (reduce sum-points sums)))
 
+(defn sum-div [x y]
+  (\ (+ x y) 2))
+
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
