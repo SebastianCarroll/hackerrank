@@ -18,6 +18,13 @@
     (is (= [12 4 12] (loop1 [12 4])))
     (is (= [12 4 7 12] (loop1 [12 4 7]))))
   (testing "final test given points return area"
+    ; 0 0
+    ; 1 1 | 0 0 
+    ; 1 0 | 0 1
+    ; 0 0 | 0 0
+    ;       0 1
+    ;       (0-1)/2 = 0.5
+    (is (= 0.5 (poly-area [[0 0] [1 1] [1 0]])))
     (is (= 60 (poly-area
                [[-3 -2]
                 [-1 4]

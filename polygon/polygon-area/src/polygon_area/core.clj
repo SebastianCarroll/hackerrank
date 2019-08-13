@@ -37,7 +37,7 @@
    (/ (- x y) 2)))
 
 (defn poly-area [ps]
-  (minus-div2 (sum-many-points (loop1 ps))))
+  (float (minus-div2 (sum-many-points (loop1 ps)))))
 
 (defn -main
   "I don't do a whole lot ... yet."
